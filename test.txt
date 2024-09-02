@@ -9,10 +9,6 @@ This is a test file
 This is a new first line
 This is a test file
 This is a new first line
-This is a test file
-This is a new first line
-This is a test file
-This is a new first line
 This is a test FILE
 This is a new first line
 This is a test file
