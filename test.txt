@@ -1,3 +1,6 @@
+1 bla 
+2 blub
+3 test
 This is a new first line
 This is a test file
 This is a new first line
