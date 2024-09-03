@@ -1,4 +1,13 @@
+---
+geometry: margin=25mm
+colorlinks: true
+urlcolor: red
+---
+
 # Git cheatsheet
+
+Git documentation can be found [here](https://git-scm.com/doc)
+
 ## git add
 adds a file to the staging area
 
