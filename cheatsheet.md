@@ -2,10 +2,11 @@
 ## git add
 adds a file to the staging area
 
+## git commit
+commits changes from staging area to repository
+
 ## git push
 pushes local changes to remote repository
-
-This is some stupid stuff by the way.
 
 ## git mv
 tells git to rename a file
