@@ -12,8 +12,8 @@ Headers are created by starting a line with #
 
 Unordered lists can be created by prefixing lines with *:
 
-* Point 1
-* Point 2
+* This is the first point
+* I have more points than that
 * More points!
 
 ## More stuff
