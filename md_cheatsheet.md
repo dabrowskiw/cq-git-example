@@ -17,7 +17,7 @@ Images work just like links with an exclamation mark:
 
 Unordered lists can be created by prefixing lines with *:
 
-* This is the first point
+* Point one
 * I have more points than that
 * More points!
 
