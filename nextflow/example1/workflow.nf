@@ -33,6 +33,17 @@ process splitSequences {
   """
 }
 
+process splitSequencesPython {
+  publishDir params.out, mode: "copy", overwrite: true
+  input:
+    path infile 
+  output:
+    path "seq_*.fasta"
+  """
+  python $projectDir/split.py $infile seq_
+  """
+}
+
 workflow {
-  downloadFile | splitSequences
+  downloadFile | splitSequencesPython
 }
