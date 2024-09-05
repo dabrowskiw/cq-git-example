@@ -56,9 +56,5 @@ process countBases {
 }
 
 workflow {
-//  downloadFile | splitSequencesPython | countBases
-  fastachannel = downloadFile()
-  singlefastachannel = splitSequencesPython(fastachannel)
-  singlefastachannel_flat = singlefastachannel.flatten()
-  countBases(singlefastachannel_flat)
+  downloadFile | splitSequencesPython | flatten | countBases 
 }
