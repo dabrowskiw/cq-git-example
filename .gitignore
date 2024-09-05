@@ -3,3 +3,4 @@
 **/.nextflow*
 **/*.fasta
 **/work/
+**/.nextflow.log*
