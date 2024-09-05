@@ -44,6 +44,21 @@ process splitSequencesPython {
   """
 }
 
+process countBases {
+  publishDir params.out, mode: "copy", overwrite: true
+  input:
+    path infile 
+  output:
+    path "${infile.getSimpleName()}.basecount"
+  """
+  grep -v "^>" $infile | wc -m > ${infile.getSimpleName()}.basecount
+  """
+}
+
 workflow {
-  downloadFile | splitSequencesPython
+//  downloadFile | splitSequencesPython | countBases
+  fastachannel = downloadFile()
+  singlefastachannel = splitSequencesPython(fastachannel)
+  singlefastachannel_flat = singlefastachannel.flatten()
+  countBases(singlefastachannel_flat)
 }
