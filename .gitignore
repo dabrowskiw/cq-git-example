@@ -4,3 +4,4 @@
 **/*.fasta
 **/work/
 **/.nextflow.log*
+nextflow/**/output/
