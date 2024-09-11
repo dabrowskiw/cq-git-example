@@ -5,6 +5,7 @@ params.accession="SRR1777174"
 
 process prefetch {
   storeDir params.storeDir
+  container "docker://ncbi/sra-tools"
   input:
     val accession
   output:
