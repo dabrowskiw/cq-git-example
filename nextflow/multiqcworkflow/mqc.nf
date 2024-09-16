@@ -46,7 +46,8 @@ process fastp {
   input:
     path fastqfile
   output:
-    path "${fastqfile.getSimpleName()}_trimmed.*"
+    path "${fastqfile.getSimpleName()}_trimmed.fastq", emit: data
+    path "${fastqfile.getSimpleName()}_trimmed.json", emit: report
   """
   fastp -i $fastqfile -o ${fastqfile.getSimpleName()}_trimmed.fastq
   mv fastp.json ${fastqfile.getSimpleName()}_trimmed.json
@@ -75,7 +76,7 @@ workflow {
   rawfastq_channel = fasterqdump(sra_channel)
   fastqc_channel = fastqc(rawfastq_channel)
   fastp_channel = fastp(rawfastq_channel)
-  combined_channel = fastqc_channel.concat(fastp_channel)
+  combined_channel = fastqc_channel.concat(fastp_channel.report)
   combined_collected_channel = combined_channel.collect()
   multiqc(combined_collected_channel)
 
