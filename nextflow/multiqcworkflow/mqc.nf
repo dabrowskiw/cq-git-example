@@ -1,6 +1,8 @@
 nextflow.enable.dsl = 2
 
 params.accession = null
+params.with_fastqc = false
+params.with_fastp = false
 params.cache = "${launchDir}/cache"
 params.out = "${launchDir}/out"
 
@@ -74,9 +76,14 @@ workflow {
   accession_channel = Channel.from(params.accession)
   sra_channel = prefetch(accession_channel)
   rawfastq_channel = fasterqdump(sra_channel)
-  fastqc_channel = fastqc(rawfastq_channel)
-  fastp_channel = fastp(rawfastq_channel)
-  combined_channel = fastqc_channel.concat(fastp_channel.report)
+
+  combined_channel = Channel.empty()
+  if(params.with_fastqc) {
+    combined_channel = combined_channel.concat(fastqc(rawfastq_channel))
+  }
+  if(params.with_fastp) {
+    combined_channel = combined_channel.concat(fastp(rawfastq_channel).report)
+  }
   combined_collected_channel = combined_channel.collect()
   multiqc(combined_collected_channel)
 
